@@ -1,16 +1,10 @@
-"""
-Traceroute Core Logic
-Windows / WSL compatible version
-"""
 
 import subprocess
 import platform
 import re
 
 def simple_traceroute(destination, max_hops=30):
-    """
-    System traceroute/tracert command ব্যবহার করে realistic results return করে
-    """
+    
     result = {
         'success': True,
         'destination': destination,
@@ -30,7 +24,7 @@ def simple_traceroute(destination, max_hops=30):
         proc = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
         lines = proc.stdout.splitlines()
 
-        # Windows tracert output এ first line skip
+        
         start_idx = 0
         if system == "Windows":
             while start_idx < len(lines) and not re.match(r'\s*1\s+', lines[start_idx]):
@@ -41,7 +35,7 @@ def simple_traceroute(destination, max_hops=30):
             if not line:
                 continue
 
-            # Regex দিয়ে hop parse
+            
             if system == "Windows":
                 match = re.match(r"(\d+)\s+([\d*]+)\s+ms\s+([\d*]+)\s+ms\s+([\d*]+)\s+ms\s+([\d\.]+)?", line)
                 if not match:
@@ -51,7 +45,7 @@ def simple_traceroute(destination, max_hops=30):
                 ip = match.group(5) if match.group(5) else None
                 hostname = ip if ip else "Timeout"
             else:
-                # Linux traceroute output: ttl ip rtt1 rtt2 rtt3 ...
+                
                 parts = re.split(r'\s+', line)
                 if len(parts) < 2:
                     continue

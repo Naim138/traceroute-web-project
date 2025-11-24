@@ -9,7 +9,7 @@ form.addEventListener('submit', async (e) => {
     const destination = document.getElementById('destination').value;
     const max_hops = document.getElementById('max_hops').value;
 
-    // Reset UI
+    
     loading.style.display = 'block';
     errorDiv.style.display = 'none';
     resultsDiv.style.display = 'none';
@@ -31,13 +31,13 @@ form.addEventListener('submit', async (e) => {
             return;
         }
 
-        // Fill header info
+       
         document.getElementById('result-destination').innerText = data.destination;
         document.getElementById('result-ip').innerText = data.dest_ip;
         document.getElementById('result-hops').innerText = data.total_hops;
         document.getElementById('result-status').innerText = data.reached ? 'Reached' : 'Unreachable';
 
-        // Fill table rows
+        
         data.hops.forEach(hop => {
             let rttStr = hop.avg_rtt !== null ? hop.avg_rtt.toFixed(2) : '*';
             let ipStr = hop.ip || '*';

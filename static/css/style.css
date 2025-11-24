@@ -1,16 +1,16 @@
-/* Global Styles */
+
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f0f0f0; padding:20px; color:#333; }
 .container { max-width:1200px; margin:0 auto; background:white; border-radius:15px; box-shadow:0 10px 40px rgba(0,0,0,0.2); overflow:hidden; }
 
-/* Header */
+
 header { background:#333; color:white; padding:30px; text-align:center; }
 header h1 { font-size:2em; margin-bottom:5px; }
 header p { font-size:1em; opacity:0.8; margin-bottom:15px; }
 nav a { color:white; text-decoration:none; margin:0 10px; padding:5px 15px; border-radius:5px; }
 nav a.active { background:rgba(255,255,255,0.2); }
 
-/* Input Section */
+
 .input-section { padding:30px; }
 .input-section h2 { color:#333; margin-bottom:15px; }
 .form-group { margin-bottom:15px; }
@@ -20,20 +20,20 @@ nav a.active { background:rgba(255,255,255,0.2); }
 button[type="submit"] { width:100%; padding:12px; background:#333; color:white; border:none; border-radius:5px; font-size:16px; cursor:pointer; }
 button[type="submit"]:hover { background:#555; }
 
-/* Examples */
+
 .examples { margin-top:20px; padding:15px; background:#f8f8f8; border-radius:5px; }
 .example-btn { padding:5px 10px; margin:3px; border:1px solid #333; border-radius:3px; background:white; cursor:pointer; }
 .example-btn:hover { background:#333; color:white; }
 
-/* Loading */
+
 .loading { padding:20px; text-align:center; }
 .spinner { border:4px solid #f3f3f3; border-top:4px solid #333; border-radius:50%; width:30px; height:30px; animation:spin 1s linear infinite; margin:0 auto 10px; }
 @keyframes spin { 0% {transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
 
-/* Error */
+
 .error { margin:10px 20px; padding:10px; background:#fee; border-left:4px solid #f44; border-radius:5px; color:#c33; }
 
-/* Results CMD-style Table */
+
 .hops-table table {
     font-family:'Courier New', monospace;
     font-size:13px;
@@ -52,5 +52,5 @@ button[type="submit"]:hover { background:#555; }
 .hops-table td.location { color:#a3a3a3; }
 .hops-table { overflow-x:auto; }
 
-/* Footer */
+
 footer { text-align:center; padding:15px; margin-top:20px; background:#333; color:white; font-size:12px; }

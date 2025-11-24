@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
+        
         <header>
             <h1>🌐 Traceroute Web Tool</h1>
             <p>Discover the path packets take across the Internet</p>
@@ -18,7 +18,7 @@
             </nav>
         </header>
 
-        <!-- Input Form -->
+        
         <div class="input-section">
             <h2>Enter Destination</h2>
             <form id="traceForm">
@@ -39,7 +39,7 @@
                 </button>
             </form>
 
-            <!-- Quick Examples -->
+            
             <div class="examples">
                 <p>Quick examples:</p>
                 <button class="example-btn" onclick="setDestination('google.com')">Google</button>
@@ -49,16 +49,16 @@
             </div>
         </div>
 
-        <!-- Loading -->
+        
         <div id="loading" class="loading" style="display: none;">
             <div class="spinner"></div>
             <p>Tracing route... Please wait...</p>
         </div>
 
-        <!-- Error Display -->
+        
         <div id="error" class="error" style="display: none;"></div>
 
-        <!-- Results -->
+        
         <div id="results" class="results" style="display: none;">
             <h2>Traceroute Results</h2>
             
@@ -93,7 +93,7 @@
                         </tr>
                     </thead>
                     <tbody id="hopsTableBody">
-                        <!-- JS will fill rows -->
+                        
                     </tbody>
                 </table>
             </div>

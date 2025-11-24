@@ -1,7 +1,4 @@
-"""
-Flask Web Application for Traceroute
-WSL / Windows compatible version
-"""
+
 
 from flask import Flask, render_template, request, jsonify
 from traceroute_core import simple_traceroute
@@ -11,7 +8,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# Results folder তৈরি করুন
+
 RESULTS_DIR = 'results'
 if not os.path.exists(RESULTS_DIR):
     os.makedirs(RESULTS_DIR)
@@ -19,19 +16,19 @@ if not os.path.exists(RESULTS_DIR):
 
 @app.route('/')
 def index():
-    """Home page"""
+   
     return render_template('index.html')
 
 
 @app.route('/about')
 def about():
-    """About page"""
+    
     return render_template('about.html')
 
 
 @app.route('/trace', methods=['POST'])
 def trace():
-    """Traceroute run করুন"""
+    
     try:
         data = request.get_json()
         destination = data.get('destination', '')
@@ -40,10 +37,10 @@ def trace():
         if not destination:
             return jsonify({'success': False, 'error': 'Please enter a destination'})
 
-        # Core traceroute call
+        
         result = simple_traceroute(destination, max_hops)
 
-        # Save JSON result
+        
         if result.get('success'):
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             filename = f"{RESULTS_DIR}/trace_{destination.replace('.', '_')}_{timestamp}.json"
@@ -58,7 +55,7 @@ def trace():
 
 @app.route('/history')
 def history():
-    """Previous results দেখান"""
+    
     try:
         files = []
         for filename in os.listdir(RESULTS_DIR):
@@ -72,7 +69,7 @@ def history():
                         'timestamp': filename.split('_')[-2] + '_' + filename.split('_')[-1].replace('.json', '')
                     })
 
-        # Sort by timestamp (newest first)
+        
         files.sort(key=lambda x: x['timestamp'], reverse=True)
 
         return jsonify({'success': True, 'files': files[:10]})

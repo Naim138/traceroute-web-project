@@ -1,7 +1,4 @@
-"""
-Traceroute Core Logic
-এই file এ মূল traceroute code আছে
-"""
+
 
 import socket
 import struct
@@ -10,10 +7,10 @@ import requests
 
 
 class Traceroute:
-    """Main Traceroute Class"""
+   
     
     def __init__(self, destination, max_hops=30, timeout=2, num_probes=3):
-        """Initialize করুন"""
+       
         self.destination = destination
         self.max_hops = max_hops
         self.timeout = timeout
@@ -22,7 +19,7 @@ class Traceroute:
         self.results = []
     
     def resolve_hostname(self):
-        """Hostname থেকে IP বের করুন"""
+        
         try:
             self.dest_ip = socket.gethostbyname(self.destination)
             return True
@@ -30,7 +27,7 @@ class Traceroute:
             return False
     
     def calculate_checksum(self, data):
-        """ICMP Checksum calculate করুন"""
+        
         checksum = 0
         count_to = (len(data) // 2) * 2
         
@@ -51,31 +48,31 @@ class Traceroute:
         return answer
     
     def create_icmp_packet(self, packet_id, sequence):
-        """ICMP packet তৈরি করুন"""
-        icmp_type = 8  # Echo Request
+        
+        icmp_type = 8  
         icmp_code = 0
         checksum = 0
         
-        # Header তৈরি
+        
         header = struct.pack('!BBHHH', icmp_type, icmp_code, checksum, 
                            packet_id, sequence)
         
-        # Data যোগ করুন
+       
         data = b'traceroute_data'
         
-        # Checksum calculate করুন
+        
         checksum = self.calculate_checksum(header + data)
         
-        # Final header
+       
         header = struct.pack('!BBHHH', icmp_type, icmp_code, checksum, 
                            packet_id, sequence)
         
         return header + data
     
     def send_probe(self, ttl, packet_id, sequence):
-        """একটা probe packet পাঠান"""
+        
         try:
-            # Socket তৈরি
+            
             send_socket = socket.socket(socket.AF_INET, socket.SOCK_RAW, 
                                        socket.IPPROTO_ICMP)
             send_socket.setsockopt(socket.IPPROTO_IP, socket.IP_TTL, ttl)
@@ -84,16 +81,16 @@ class Traceroute:
                                        socket.IPPROTO_ICMP)
             recv_socket.settimeout(self.timeout)
             
-            # Packet পাঠান
+            
             packet = self.create_icmp_packet(packet_id, sequence)
             send_time = time.time()
             send_socket.sendto(packet, (self.dest_ip, 1))
             
-            # Response receive করুন
+            
             try:
                 data, addr = recv_socket.recvfrom(1024)
                 recv_time = time.time()
-                rtt = (recv_time - send_time) * 1000  # ms এ convert
+                rtt = (recv_time - send_time) * 1000  
                 router_ip = addr[0]
                 
                 send_socket.close()
@@ -111,7 +108,7 @@ class Traceroute:
             return None, None
     
     def get_hostname(self, ip):
-        """IP থেকে hostname বের করুন"""
+        
         try:
             hostname = socket.gethostbyaddr(ip)[0]
             return hostname
@@ -119,7 +116,7 @@ class Traceroute:
             return ip
     
     def get_geolocation(self, ip):
-        """IP এর location বের করুন"""
+       
         try:
             response = requests.get(f"http://ip-api.com/json/{ip}", timeout=2)
             if response.status_code == 200:
@@ -135,8 +132,7 @@ class Traceroute:
         return None
     
     def trace(self, with_geo=False):
-        """Main traceroute function"""
-        # Hostname resolve করুন
+       
         if not self.resolve_hostname():
             return {
                 'success': False,
@@ -146,7 +142,7 @@ class Traceroute:
         packet_id = 12345
         reached = False
         
-        # প্রতিটা TTL এর জন্য
+       
         for ttl in range(1, self.max_hops + 1):
             hop_data = {
                 'ttl': ttl,
@@ -156,7 +152,7 @@ class Traceroute:
             router_ips = []
             rtts = []
             
-            # Multiple probes
+            
             for probe in range(self.num_probes):
                 router_ip, rtt = self.send_probe(ttl, packet_id, probe)
                 
@@ -177,7 +173,7 @@ class Traceroute:
                 
                 packet_id += 1
             
-            # Hop data process করুন
+            
             if router_ips:
                 primary_ip = router_ips[0]
                 hostname = self.get_hostname(primary_ip)
@@ -188,12 +184,12 @@ class Traceroute:
                 hop_data['avg_rtt'] = round(avg_rtt, 2) if avg_rtt else None
                 hop_data['all_rtts'] = [round(r, 2) if r else None for r in rtts]
                 
-                # Geolocation
+              
                 if with_geo:
                     geo = self.get_geolocation(primary_ip)
                     hop_data['location'] = geo
                 
-                # Destination এ পৌঁছেছি কিনা check করুন
+              
                 if primary_ip == self.dest_ip:
                     reached = True
                     hop_data['is_destination'] = True
@@ -218,8 +214,6 @@ class Traceroute:
 
 
 def simple_traceroute(destination, max_hops=30):
-    """
-    Simple function web app থেকে call করার জন্য
-    """
+    
     tracer = Traceroute(destination, max_hops=max_hops)
     return tracer.trace(with_geo=True)
