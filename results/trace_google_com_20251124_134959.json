@@ -1,0 +1,259 @@
+{
+  "success": true,
+  "destination": "google.com",
+  "dest_ip": "172.217.24.142",
+  "reached": false,
+  "total_hops": 10,
+  "hops": [
+    {
+      "ttl": 1,
+      "probes": [
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        }
+      ],
+      "ip": null,
+      "hostname": "Timeout",
+      "avg_rtt": null,
+      "all_rtts": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "ttl": 2,
+      "probes": [
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        }
+      ],
+      "ip": null,
+      "hostname": "Timeout",
+      "avg_rtt": null,
+      "all_rtts": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "ttl": 3,
+      "probes": [
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        }
+      ],
+      "ip": null,
+      "hostname": "Timeout",
+      "avg_rtt": null,
+      "all_rtts": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "ttl": 4,
+      "probes": [
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        }
+      ],
+      "ip": null,
+      "hostname": "Timeout",
+      "avg_rtt": null,
+      "all_rtts": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "ttl": 5,
+      "probes": [
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        }
+      ],
+      "ip": null,
+      "hostname": "Timeout",
+      "avg_rtt": null,
+      "all_rtts": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "ttl": 6,
+      "probes": [
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        }
+      ],
+      "ip": null,
+      "hostname": "Timeout",
+      "avg_rtt": null,
+      "all_rtts": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "ttl": 7,
+      "probes": [
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        }
+      ],
+      "ip": null,
+      "hostname": "Timeout",
+      "avg_rtt": null,
+      "all_rtts": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "ttl": 8,
+      "probes": [
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        }
+      ],
+      "ip": null,
+      "hostname": "Timeout",
+      "avg_rtt": null,
+      "all_rtts": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "ttl": 9,
+      "probes": [
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        }
+      ],
+      "ip": null,
+      "hostname": "Timeout",
+      "avg_rtt": null,
+      "all_rtts": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "ttl": 10,
+      "probes": [
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        },
+        {
+          "ip": null,
+          "rtt": null
+        }
+      ],
+      "ip": null,
+      "hostname": "Timeout",
+      "avg_rtt": null,
+      "all_rtts": [
+        null,
+        null,
+        null
+      ]
+    }
+  ]
+}

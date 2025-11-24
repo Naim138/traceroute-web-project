@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traceroute Web Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🌐 Traceroute Web Tool</h1>
+            <p>Discover the path packets take across the Internet</p>
+            <nav>
+                <a href="/" class="active">Home</a>
+                <a href="/about">About</a>
+            </nav>
+        </header>
+
+        <!-- Input Form -->
+        <div class="input-section">
+            <h2>Enter Destination</h2>
+            <form id="traceForm">
+                <div class="form-group">
+                    <label for="destination">Hostname or IP Address:</label>
+                    <input type="text" id="destination" name="destination" 
+                           placeholder="e.g., google.com or 8.8.8.8" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="max_hops">Maximum Hops:</label>
+                    <input type="number" id="max_hops" name="max_hops" 
+                           value="30" min="1" max="50">
+                </div>
+                
+                <button type="submit" id="traceBtn">
+                    🚀 Start Traceroute
+                </button>
+            </form>
+
+            <!-- Quick Examples -->
+            <div class="examples">
+                <p>Quick examples:</p>
+                <button class="example-btn" onclick="setDestination('google.com')">Google</button>
+                <button class="example-btn" onclick="setDestination('facebook.com')">Facebook</button>
+                <button class="example-btn" onclick="setDestination('8.8.8.8')">Google DNS</button>
+                <button class="example-btn" onclick="setDestination('mit.edu')">MIT</button>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Tracing route... Please wait...</p>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error" class="error" style="display: none;"></div>
+
+        <!-- Results -->
+        <div id="results" class="results" style="display: none;">
+            <h2>Traceroute Results</h2>
+            
+            <div class="result-header">
+                <div class="info-box">
+                    <strong>Destination:</strong>
+                    <span id="result-destination"></span>
+                </div>
+                <div class="info-box">
+                    <strong>IP Address:</strong>
+                    <span id="result-ip"></span>
+                </div>
+                <div class="info-box">
+                    <strong>Total Hops:</strong>
+                    <span id="result-hops"></span>
+                </div>
+                <div class="info-box">
+                    <strong>Status:</strong>
+                    <span id="result-status"></span>
+                </div>
+            </div>
+
+            <div class="hops-table">
+                <table id="hopsTable">
+                    <thead>
+                        <tr>
+                            <th>Hop</th>
+                            <th>IP Address</th>
+                            <th>Hostname</th>
+                            <th>Location</th>
+                            <th>RTT (ms)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hopsTableBody">
+                        <!-- JS will fill rows -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created for Computer Networking Lab Project</p>
+        <p>© 2024 - Traceroute Implementation</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

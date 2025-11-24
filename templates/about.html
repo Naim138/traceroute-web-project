@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Traceroute Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 About Traceroute</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/about" class="active">About</a>
+            </nav>
+        </header>
+
+        <div class="about-content">
+            <section>
+                <h2>What is Traceroute?</h2>
+                <p>
+                    Traceroute is a network diagnostic tool that helps us understand 
+                    the path packets take from the source to the destination.
+                </p>
+            </section>
+
+            <section>
+                <h2>How Does It Work?</h2>
+                <div class="how-it-works">
+                    <div class="step">
+                        <h3>1️⃣ TTL Manipulation</h3>
+                        <p>Every packet has a TTL (Time-To-Live) value. It decreases by 1 at each router.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>2️⃣ ICMP Messages</h3>
+                        <p>When TTL becomes 0, the router sends an ICMP Time Exceeded message.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>3️⃣ Path Discovery</h3>
+                        <p>By gradually increasing the TTL, we can discover the IP address of each router.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Features</h2>
+                <ul class="features-list">
+                    <li>✅ ICMP-based traceroute implementation</li>
+                    <li>✅ Real-time route discovery</li>
+                    <li>✅ Hostname resolution</li>
+                    <li>✅ Geographic location tracking</li>
+                    <li>✅ Round-trip time measurement</li>
+                    <li>✅ Web-based interface</li>
+                    <li>✅ Result history</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Technical Details</h2>
+                <div class="tech-details">
+                    <div class="tech-box">
+                        <h3>Protocol</h3>
+                        <p>ICMP (Internet Control Message Protocol)</p>
+                    </div>
+                    <div class="tech-box">
+                        <h3>Language</h3>
+                        <p>Python 3 with Flask</p>
+                    </div>
+                    <div class="tech-box">
+                        <h3>Port</h3>
+                        <p>5000 (Web Interface)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Understanding the Output</h2>
+                <div class="output-explanation">
+                    <p><strong>Hop:</strong> Router number (1, 2, 3...)</p>
+                    <p><strong>IP Address:</strong> IP address of the router</p>
+                    <p><strong>Hostname:</strong> Router's domain name (if available)</p>
+                    <p><strong>Location:</strong> Physical location of the router (city, country)</p>
+                    <p><strong>RTT:</strong> Round-Trip Time (latency in milliseconds)</p>
+                    <p><strong>* (Star):</strong> Router did not respond (timeout/firewall)</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Project Information</h2>
+                <div class="project-info">
+                    <p><strong>Course:</strong> Computer Networking Lab</p>
+                    <p><strong>Topic:</strong> Traceroute Implementation in Python</p>
+                    <p><strong>Reference:</strong> Computer Networking: A Top-Down Approach (Kurose & Ross)</p>
+                    <p><strong>Year:</strong> 2024</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>System Requirements</h2>
+                <ul>
+                    <li>Python 3.7 or higher</li>
+                    <li>Flask web framework</li>
+                    <li>Administrator/Root privileges (for raw sockets)</li>
+                    <li>Active Internet connection</li>
+                </ul>
+            </section>
+
+            <div class="back-button">
+                <a href="/" class="btn-primary">⬅️ Back to Traceroute</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created for Computer Networking Lab Project</p>
+        <p>© 2024 - Traceroute Implementation</p>
+    </footer>
+</body>
+</html>
